@@ -2,6 +2,7 @@
 // delete the local development overrides at the bottom of this file
 
 const webpack = require('webpack');
+var path = require('path');
 
 const CONFIG = {
   mode: 'development',
@@ -11,6 +12,8 @@ const CONFIG = {
   },
 
   output: {
+    path: path.resolve(__dirname, "dist"),
+    publicPath: "/public/",
     library: 'App'
   },
 
