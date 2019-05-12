@@ -8,16 +8,9 @@ import DeckGL from '@deck.gl/react';
 import {PolygonLayer} from '@deck.gl/layers';
 import {TripsLayer} from '@deck.gl/geo-layers';
 
-// Set your mapbox token here
 const MAPBOX_TOKEN = process.env.MapboxAccessToken; // eslint-disable-line
 
-// Source data CSV
-const DATA_URL = {
-  BUILDINGS:
-    'https://raw.githubusercontent.com/uber-common/deck.gl-data/master/examples/trips/buildings.json', // eslint-disable-line
-  TRIPS:
-    'https://raw.githubusercontent.com/uber-common/deck.gl-data/master/examples/trips/trips.json' // eslint-disable-line
-};
+const SEGMENT_DATA = require('../data/trip_data.json');
 
 const ambientLight = new AmbientLight({
   color: [255, 255, 255],
@@ -32,18 +25,11 @@ const pointLight = new PointLight({
 
 const lightingEffect = new LightingEffect({ambientLight, pointLight});
 
-const material = new PhongMaterial({
-  ambient: 0.1,
-  diffuse: 0.6,
-  shininess: 32,
-  specularColor: [60, 64, 70]
-});
-
 export const INITIAL_VIEW_STATE = {
-  longitude: -74,
-  latitude: 40.72,
-  zoom: 13,
-  pitch: 45,
+  longitude: -122.438,
+  latitude: 37.776,
+  zoom: 12.5,
+  pitch: 15,
   bearing: 0
 };
 
@@ -82,8 +68,8 @@ class Map extends Component {
 
   _animate() {
     const {
-      loopLength = 1800, // unit corresponds to the timestamp in source data
-      animationSpeed = 30 // unit time per second
+      loopLength = 86400, // unit corresponds to the timestamp in source data
+      animationSpeed = 480 // unit time per second
     } = this.props;
     const timestamp = Date.now() / 1000;
     const loopTime = loopLength / animationSpeed;
@@ -95,30 +81,19 @@ class Map extends Component {
   }
 
   _renderLayers() {
-    const {buildings = DATA_URL.BUILDINGS, trips = DATA_URL.TRIPS, trailLength = 180} = this.props;
+    const {trips = SEGMENT_DATA, trailLength = 180} = this.props;
 
     return [
       new TripsLayer({
         id: 'trips',
         data: trips,
         getPath: d => d.segments,
-        getColor: d => (d.vendor === 0 ? [253, 128, 93] : [23, 184, 190]),
-        opacity: 0.3,
+        getColor: d => (d.type === 'strava' ? [253, 128, 93] : [23, 184, 190]),
+        opacity: 0.8,
         widthMinPixels: 2,
         rounded: true,
         trailLength,
         currentTime: this.state.time
-      }),
-      new PolygonLayer({
-        id: 'buildings',
-        data: buildings,
-        extruded: true,
-        wireframe: false,
-        opacity: 0.5,
-        getPolygon: f => f.polygon,
-        getElevation: f => f.height,
-        getFillColor: [74, 80, 87],
-        material
       })
     ];
   }
@@ -137,7 +112,7 @@ class Map extends Component {
         {baseMap && (
           <StaticMap
             reuseMaps
-            mapStyle="mapbox://styles/mapbox/dark-v9"
+            mapStyle="mapbox://styles/pthaas/cjvkfn3c51tlo1cpaibddbusi"
             preventStyleDiffing={true}
             mapboxApiAccessToken={MAPBOX_TOKEN}
           />
