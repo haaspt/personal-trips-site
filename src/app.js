@@ -10,19 +10,6 @@ const MAPBOX_TOKEN = process.env.MapboxAccessToken; // eslint-disable-line
 
 const SEGMENT_DATA = require('../data/trip_data.json');
 
-const ambientLight = new AmbientLight({
-  color: [255, 255, 255],
-  intensity: 1.0
-});
-
-const pointLight = new PointLight({
-  color: [255, 255, 255],
-  intensity: 2.0,
-  position: [-74.05, 40.7, 8000]
-});
-
-const lightingEffect = new LightingEffect({ambientLight, pointLight});
-
 export const INITIAL_VIEW_STATE = {
   longitude: -122.438,
   latitude: 37.776,
@@ -102,7 +89,6 @@ class Map extends Component {
     return (
       <DeckGL
         layers={this._renderLayers()}
-        effects={[lightingEffect]}
         initialViewState={INITIAL_VIEW_STATE}
         viewState={viewState}
         controller={controller}
