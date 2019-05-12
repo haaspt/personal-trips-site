@@ -24,11 +24,11 @@ class SidePanel extends Component {
         <h1>Patrick Tyler Haas</h1>
         <h3>A little about me</h3>
         <p>Hi!</p>
-        <p>I'm a data scientist, curently at <a href="https://scoot.co/">Scoot</a>, formerly in the NGO sector, before that I was an archaeologist. I specialize in operations and geospatial analysis (and making cool maps). I’m passionate about data for good, urban mobility, and things that generally make the world more equitable.</p>
+        <p>I'm a data scientist, currently at <a href="https://scoot.co/">Scoot</a>, formerly in the NGO sector, before that I was an archaeologist. I specialize in operations and geospatial analysis (and making cool maps). I’m passionate about data for good, urban mobility, and things that generally make the world more equitable.</p>
         <p>Check out my <a href="https://github.com/haaspt">GitHub</a> to see other things I’ve built, or my <a href="https://www.linkedin.com/in/ptylerhaas/">LinkedIn</a> for more about what I’ve worked on, or just check out my <a href="pthaas_resume.pdf">resume</a>.</p>
         <hr />
         <h3>What am I looking at?</h3>
-        <p>This is a time-lapse of several years’ worth of my own commute data via bike (red) and Scoot (blue-is), totally over 1k ride traces. The traces have been overlaid into a single 24 hour period, which plays in a 2 minute loop.</p>
+        <p>This is a time-lapse of several years’ worth of my own commute data via bike (red) and Scoot (blue-ish), over 1,000 ride traces. The traces have been overlaid into a single 24 hour period, which plays in a 2 minute loop.</p>
         <p>I built this page with React and <a href="https://deck.gl/">deck.gl</a> on top of a Mapbox base map.The data was parsed, filtered, and formatted using Python. Check out the source <a href="https://github.com/haaspt/personal-trips-site">here</a>.</p>
       </div>
     )
