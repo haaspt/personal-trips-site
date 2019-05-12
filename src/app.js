@@ -65,14 +65,14 @@ class Map extends Component {
   }
 
   _renderLayers() {
-    const {trips = SEGMENT_DATA, trailLength = 180} = this.props;
+    const {trips = SEGMENT_DATA, trailLength = 270} = this.props;
 
     return [
       new TripsLayer({
         id: 'trips',
         data: trips,
         getPath: d => d.segments,
-        getColor: d => (d.type === 'strava' ? [253, 128, 93] : [23, 184, 190]),
+        getColor: d => (d.type === 0 ? [253, 128, 93] : [23, 184, 190]),
         opacity: 0.8,
         widthMinPixels: 2,
         rounded: true,
