@@ -6,6 +6,14 @@ body {
     overflow: hidden;
 }
 
+.red {
+    color: rgb(253, 128, 93)
+}
+
+.blue {
+    color: rgb(23, 184, 190)
+}
+
 #side-panel {
     position: absolute;
     z-index: 100;

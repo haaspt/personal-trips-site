@@ -28,7 +28,7 @@ class SidePanel extends Component {
         <p>Check out my <a href="https://github.com/haaspt">GitHub</a> to see other things I’ve built, or my <a href="https://www.linkedin.com/in/ptylerhaas/">LinkedIn</a> for more about what I’ve worked on, or just check out my <a href="pthaas_resume.pdf">resume</a>.</p>
         <hr />
         <h3>What am I looking at?</h3>
-        <p>This is a time-lapse of several years’ worth of my own commute data via bike (red) and Scoot (blue-ish), over 1,000 ride traces. The traces have been overlaid into a single 24 hour period, which plays in a 2 minute loop.</p>
+        <p>This is a time-lapse of several years’ worth of my own commute data via <span class="red">bike</span> and <span class="blue">Scoot</span>, over 1,000 ride traces. The traces have been overlaid into a single 24 hour period, which plays in a 2 minute loop.</p>
         <p>I built this page with React and <a href="https://deck.gl/">deck.gl</a> on top of a Mapbox base map.The data was parsed, filtered, and formatted using Python. Check out the source <a href="https://github.com/haaspt/personal-trips-site">here</a>.</p>
       </div>
     )
@@ -77,7 +77,7 @@ class Map extends Component {
         getPath: d => d.segments,
         getColor: d => (d.type === 0 ? [253, 128, 93] : [23, 184, 190]),
         opacity: 0.8,
-        widthMinPixels: 2,
+        widthMinPixels: 4,
         rounded: true,
         trailLength,
         currentTime: this.state.time
