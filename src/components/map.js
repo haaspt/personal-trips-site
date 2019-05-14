@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import {StaticMap} from 'react-map-gl';
 import DeckGL from '@deck.gl/react';
 import {TripsLayer} from '@deck.gl/geo-layers';
+import ProgressCircle from './progress-circle';
 
 const MAPBOX_TOKEN = process.env.MapboxAccessToken; // eslint-disable-line
 
@@ -68,8 +69,10 @@ export default class Map extends Component {
 
   render() {
     const {viewState, controller = true, baseMap = true} = this.props;
+    const currentProgress = (this.state.time / 86400.0) * 360;
 
     return (
+      <div>
       <DeckGL
         layers={this._renderLayers()}
         initialViewState={INITIAL_VIEW_STATE}
@@ -84,7 +87,12 @@ export default class Map extends Component {
             mapboxApiAccessToken={MAPBOX_TOKEN}
           />
         )}
+        
       </DeckGL>
+      <ProgressCircle
+          currentValue={currentProgress}
+      />
+      </div>
     );
   }
 }
