@@ -26,7 +26,14 @@ const CONFIG = {
       },
       {
         test: /\.(png|svg|jpg|gif|pdf)$/,
-        loader: 'file-loader'
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]'
+            }
+          }
+        ]
       },
       {
         test: /\.css$/,
