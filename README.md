@@ -8,10 +8,17 @@ Clone the repo and install the required dependencies:
 npm install
 ```
 
-To transpile and run use webpack:
+To run the project on a dev server:
 
 ```bash
-npx webpack
+npm start
 ```
 
-Then simply open `index.html` in your favorite browser.
+To build (either for development or production):
+
+```bash
+# Production
+npm run build
+# Development
+npm run develop
+```
